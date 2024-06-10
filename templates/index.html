@@ -4,13 +4,32 @@
     <meta charset="UTF-8">
     <title>Girls just wanna have equal pay</title>
     <link rel="stylesheet" href="/static/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#form").on("submit", function(event){
+                event.preventDefault();
+                $.ajax({
+                    url: "/resultado",
+                    type: "GET",
+                    data: $(this).serialize(),
+                    success: function(data){
+                        $("#resultados").html(data);
+                        $('html, body').animate({
+                            scrollTop: $("#resultados").offset().top
+                        }, 1000);
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <header class="header">
     <text id="titulo">
     Desigualdade Salarial Entre Gêneros
     </text>
     <a href="/en" id="saiba_mais">English</a>
-    <a href=https://github.com/giovannacbs/salarios/ id="saiba_mais">
+    <a href="https://github.com/giovannacbs/salarios/" id="saiba_mais">
         Saiba mais sobre o projeto
     </a>
     <a href="/dados" id="saiba_mais">Veja mais dados</a>
@@ -28,7 +47,7 @@
             </div>
         </div>
         <div class="forms">
-            <form action="/resultado" method="get" class="form-container">
+            <form id="form" class="form-container">
                 <div class="form-group">
                     <label for="idade" class="form-label">Idade</label>
                     <input type="number" name="idade" id="idade" class="form-input" min="15" max="65" required>
@@ -71,6 +90,6 @@
             </form>
         </div>    
     </div>
+    <div id="resultados"></div>
 </body>
 </html>
-
