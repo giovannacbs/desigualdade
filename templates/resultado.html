@@ -1,12 +1,12 @@
 <div class="result">    
     <div class="resultados">
         <p>Valor estimado caso homem:</p>
-        <p id="sal_hom">R$<span id="h" class="counter">{{ salario_homem }}</span></p>
+        <p id="sal_hom">R$<span id="h" class="counter" data-value="{{ salario_homem }}">{{ salario_homem }}</span></p>
         <br/>
         <p>Valor estimado caso mulher:</p> 
-        <p id="sal_mul">R$<span id="m" class="counter">{{ salario_mulher }}</span></p>
+        <p id="sal_mul">R$<span id="m" class="counter" data-value="{{ salario_mulher }}">{{ salario_mulher }}</span></p>
         <br/>
-        <p>Diferença de <span class="counter">{{ percentual }}</span>%</p> 
+        <p>Diferença de <span class="counter" data-value="{{ percentual }}">{{ percentual }}</span>%</p> 
     </div>
     <div id="chart"></div>
 </div>

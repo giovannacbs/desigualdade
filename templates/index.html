@@ -5,6 +5,7 @@
     <title>Girls just wanna have equal pay</title>
     <link rel="stylesheet" href="/static/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <script>
         $(document).ready(function(){
             $("#form").on("submit", function(event){
@@ -29,7 +30,7 @@
         function animateCounters() {
             $('.counter').each(function () {
                 $(this).prop('Counter',0).animate({
-                    Counter: $(this).text()
+                    Counter: $(this).data('value')
                 }, {
                     duration: 2000,
                     easing: 'swing',
@@ -42,8 +43,8 @@
 
         function createChart() {
             const data = [
-                {category: 'Homem', value: parseFloat($("#h").text().replace('.', '').replace(',', '.'))}, 
-                {category: 'Mulher', value: parseFloat($("#m").text().replace('.', '').replace(',', '.'))}
+                {category: 'Homem', value: parseFloat($("#h").data('value'))}, 
+                {category: 'Mulher', value: parseFloat($("#m").data('value'))}
             ];
 
             const width = window.innerWidth * 0.5;
