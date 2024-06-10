@@ -113,7 +113,6 @@ def resultado():
     salario_estimado_homem = calcular_salario_homem(idade, regiao, educacao, raca, horas_trabalhadas)
     salario_estimado_mulher = calcular_salario_mulher(idade, regiao, educacao, raca, horas_trabalhadas)
 
-
     salario_estimado_mulher_txt = f"{float(salario_estimado_mulher):,.2f}".replace(",", "TEMP").replace(".", ",").replace("TEMP", ".")
     salario_estimado_homem_txt = f"{float(salario_estimado_homem):,.2f}".replace(",", "TEMP").replace(".", ",").replace("TEMP", ".")
 

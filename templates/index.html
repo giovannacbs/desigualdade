@@ -17,11 +17,90 @@
                         $("#resultados").html(data);
                         $('html, body').animate({
                             scrollTop: $("#resultados").offset().top
-                        }, 1000);
+                        }, 1000, function() {
+                            animateCounters();
+                            createChart();
+                        });
                     }
                 });
             });
         });
+
+        function animateCounters() {
+            $('.counter').each(function () {
+                $(this).prop('Counter',0).animate({
+                    Counter: $(this).text()
+                }, {
+                    duration: 2000,
+                    easing: 'swing',
+                    step: function (now) {
+                        $(this).text(parseFloat(now).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+                    }
+                });
+            });
+        }
+
+        function createChart() {
+            const data = [
+                {category: 'Homem', value: parseFloat($("#h").text().replace('.', '').replace(',', '.'))}, 
+                {category: 'Mulher', value: parseFloat($("#m").text().replace('.', '').replace(',', '.'))}
+            ];
+
+            const width = window.innerWidth * 0.5;
+            const height = window.innerHeight * 0.7;
+
+            const svg = d3.select("#chart").html("").append("svg")
+                .attr("width", width)
+                .attr("height", height);
+
+            const margin = {top: 40, right: 20, bottom: 30, left: 80},
+                chartWidth = width - margin.left - margin.right,
+                chartHeight = height - margin.top - margin.bottom;
+
+            const x = d3.scaleBand().rangeRound([0, chartWidth]).padding(0.1),
+                  y = d3.scaleLinear().rangeRound([chartHeight, 0]);
+
+            const g = svg.append("g")
+                         .attr("transform", `translate(${margin.left},${margin.top})`);
+
+            x.domain(data.map(d => d.category));
+            y.domain([0, d3.max(data, d => d.value)]);
+
+            const formatCurrency = d3.formatLocale({
+                decimal: ",",
+                thousands: ".",
+                grouping: [3],
+                currency: ["R$", ""]}).format("$,.2f");
+                
+            g.append("g")
+             .attr("class", "axis axis--x")
+             .attr("transform", `translate(0,${chartHeight})`)
+             .call(d3.axisBottom(x));
+
+            g.append("g")
+             .attr("class", "axis axis--y")
+             .call(d3.axisLeft(y).tickFormat(formatCurrency).tickSize(0))
+             .append("text")
+             .attr("transform", "rotate(-90)")
+             .attr("y", 6)
+             .attr("dy", "0.71em")
+             .attr("text-anchor", "end")
+             .text("Valor");
+
+            g.selectAll(".bar")
+            .data(data)
+            .enter().append("rect")
+            .attr("class", "bar")
+            .attr("x", d => x(d.category))
+            .attr("width", x.bandwidth())
+            .attr("y", chartHeight)
+            .attr("height", 0)
+            .style("fill", d => d.category === "Homem" ? "#4f69e1" : "#8B98F3")
+            .transition()
+            .duration(2000)
+            .attr("y", d => y(d.value))
+            .attr("height", d => chartHeight - y(d.value));
+        }
     </script>
 </head>
 <header class="header">
@@ -55,7 +134,8 @@
                 <div class="form-group">
                     <label for="regiao" class="form-label">Região</label>
                     <select name="regiao" id="regiao" class="form-select" required>
-                        <option value="" selected disabled>Selecione a região...</option>                    <option value="Centro-Oeste">Centro-Oeste</option>
+                        <option value="" selected disabled>Selecione a região...</option>
+                        <option value="Centro-Oeste">Centro-Oeste</option>
                         <option value="Nordeste">Nordeste</option>
                         <option value="Norte">Norte</option>
                         <option value="Sul">Sul</option>
