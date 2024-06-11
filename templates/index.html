@@ -7,34 +7,38 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script>
-        $(document).ready(function(){
-            $("#form").on("submit", function(event){
+        $(document).ready(function() {
+            $("#form").on("submit", function(event) {
                 event.preventDefault();
                 $.ajax({
                     url: "/resultado",
                     type: "GET",
                     data: $(this).serialize(),
-                    success: function(data){
+                    success: function(data) {
                         $("#resultados").html(data);
-                        $('html, body').animate({
-                            scrollTop: $("#resultados").offset().top
-                        }, 1000, function() {
-                            animateCounters();
-                            createChart();
-                        });
+
+                        function scrollToBottom() {
+                            $('html, body').animate({
+                                scrollTop: $("#resultados").offset().top + $("#resultados").outerHeight() - window.innerHeight
+                            }, 1000);
+                        }
+
+                        animateCounters();
+                        createChart();
+                        setTimeout(scrollToBottom, 500);
                     }
                 });
             });
         });
 
         function animateCounters() {
-            $('.counter').each(function () {
-                $(this).prop('Counter',0).animate({
+            $('.counter').each(function() {
+                $(this).prop('Counter', 0).animate({
                     Counter: $(this).data('value')
                 }, {
                     duration: 2000,
                     easing: 'swing',
-                    step: function (now) {
+                    step: function(now) {
                         $(this).text(parseFloat(now).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, "."));
                     }
                 });
@@ -43,18 +47,18 @@
 
         function createChart() {
             const data = [
-                {category: 'Homem', value: parseFloat($("#h").data('value'))}, 
+                {category: 'Homem', value: parseFloat($("#h").data('value'))},
                 {category: 'Mulher', value: parseFloat($("#m").data('value'))}
             ];
 
-            const width = window.innerWidth * 0.5;
-            const height = window.innerHeight * 0.7;
+            const width = window.innerWidth * 0.3;
+            const height = window.innerHeight * 0.4;
 
             const svg = d3.select("#chart").html("").append("svg")
                 .attr("width", width)
                 .attr("height", height);
 
-            const margin = {top: 40, right: 20, bottom: 30, left: 80},
+            const margin = {top: 40, right: 20, bottom: 60, left: 100},
                 chartWidth = width - margin.left - margin.right,
                 chartHeight = height - margin.top - margin.bottom;
 
@@ -71,59 +75,70 @@
                 decimal: ",",
                 thousands: ".",
                 grouping: [3],
-                currency: ["R$", ""]}).format("$,.2f");
-                
+                currency: ["R$", ""]}).format("$,.0f");
+
             g.append("g")
              .attr("class", "axis axis--x")
              .attr("transform", `translate(0,${chartHeight})`)
-             .call(d3.axisBottom(x));
+             .call(d3.axisBottom(x))
+             .selectAll("text")
+             .style("fill", "#2d326e")
+             .style("font-family", "Abril Fatface, serif")
+             .style("font-size", function() {
+                return `${Math.max(16, chartWidth * 0.025)}px`;
+            });
 
-            g.append("g")
-             .attr("class", "axis axis--y")
-             .call(d3.axisLeft(y).tickFormat(formatCurrency).tickSize(0))
-             .append("text")
-             .attr("transform", "rotate(-90)")
-             .attr("y", 6)
-             .attr("dy", "0.71em")
-             .attr("text-anchor", "end")
-             .text("Valor");
+            const yAxis = g.append("g")
+                           .attr("class", "axis axis--y")
+                           .call(d3.axisLeft(y).tickFormat(formatCurrency).tickSize(0).tickValues(y.ticks().filter(tick => tick !== 0)));
+
+            yAxis.selectAll("text")
+                 .style("fill", "#2d326e")
+                 .style("font-family", "Abril Fatface, serif")
+                 .style("font-size", function() {
+                    return `${Math.max(16, chartHeight * 0.03)}px`;
+             });
 
             g.selectAll(".bar")
-            .data(data)
-            .enter().append("rect")
-            .attr("class", "bar")
-            .attr("x", d => x(d.category))
-            .attr("width", x.bandwidth())
-            .attr("y", chartHeight)
-            .attr("height", 0)
-            .style("fill", d => d.category === "Homem" ? "#4f69e1" : "#8B98F3")
-            .transition()
-            .duration(2000)
-            .attr("y", d => y(d.value))
-            .attr("height", d => chartHeight - y(d.value));
+             .data(data)
+             .enter().append("rect")
+             .attr("class", "bar")
+             .attr("x", d => x(d.category))
+             .attr("width", x.bandwidth())
+             .attr("y", chartHeight)
+             .attr("height", 0)
+             .style("fill", d => d.category === "Homem" ? "#007a94" : "#A57BB6")
+             .transition()
+             .duration(2000)
+             .attr("y", d => y(d.value))
+             .attr("height", d => chartHeight - y(d.value));
         }
+
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .axis path,
+            .axis line {
+                stroke: #2d326e;
+                stroke-width: 2px;
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </head>
-<header class="header">
-    <text id="titulo">
-    Desigualdade Salarial Entre Gêneros
-    </text>
-    <a href="/en" id="saiba_mais">English</a>
-    <a href="https://github.com/giovannacbs/salarios/" id="saiba_mais">
-        Saiba mais sobre o projeto
-    </a>
-    <a href="/dados" id="saiba_mais">Veja mais dados</a>
-</header>
 <body>
+    <header class="header">
+        <text id="titulo">Desigualdade Salarial Entre Gêneros</text>
+
+    </header>
     <div class="content-wrapper">
         <div class="main-column">
             <img class="imagem_home" src="https://raw.githubusercontent.com/giovannacbs/salarios/main/static/home.png">
-            <div class="home-text"> 
-                 <text id="sera">
+            <div class="home-text">
+                <text id="sera">
                     Será que mulher <br>
                     realmente ganha menos?
-                 </text>
-                <h2 id="entre">Selecione as variáveis idade, raça/cor, nível máximo de educação, região que reside e horas trabalhadas semanais e confira a estimativa do salário médio para homens e mulheres.</h2>
+                </text>
+                <text id="entre">Selecione as variáveis idade, raça/cor, nível máximo de educação, região que reside e horas trabalhadas semanais e confira a estimativa do salário médio para homens e mulheres.</text>
             </div>
         </div>
         <div class="forms">
@@ -169,7 +184,7 @@
                     <input type="submit" value="Calcular Salário" class="form-submit">
                 </div>
             </form>
-        </div>    
+        </div>
     </div>
     <div id="resultados"></div>
 </body>

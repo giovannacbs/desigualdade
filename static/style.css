@@ -1,37 +1,68 @@
 @import url('https://fonts.googleapis.com/css2?family=WindSong&family=Pixelify+Sans:wght@400..700&family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oxanium:wght@200..800&display=swap');
 
 body, html {
+    width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
     background-color: #EDF2F7;
 }
 
 
-.header{
-    font-family:"Abril Fatface", serif ;
+.header {
+    font-family: "Oxanium", monospace;
     color: #e0e6ff;
-    background-color:#2d326e;
+    background-color: #2d326e;
     font-weight: 100;
     height: 4rem;
-    align-content:space-evenly;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.footer {
+    font-family: "Montserrat", sans-serif;
+    color: #e0e6ff;
+    font-size: 1vw;
+    background-color: #2d326e;
+    width: 100%;
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    bottom: 0;
+    text-align: center;
+    z-index: 1000;
+    height: 2rem;
+
+}
+
+.links  {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 #titulo {
     font-family: "Abril Fatface", serif;
     font-size: x-large;
-    padding-left: 1%;
     color: #e0e6ff;
 }
 
 a#saiba_mais {
-    font-size: large;
     color: #e0e6ff;
-    text-decoration: underline;
     float: right;    
     padding-right: 1%;
 
 }
 
+/* página inteira */
 .content-wrapper {
     padding-top: 0px;
     display: flex;
@@ -39,8 +70,8 @@ a#saiba_mais {
     flex-wrap: wrap;
     scale: 0.90;
     align-items: center;
-
 }
+
 /* parte esquerda da página */
 .main-column {
     text-align: left;
@@ -55,31 +86,33 @@ a#saiba_mais {
 }
 
 .home-text {
-    color: #2d326e;
     display: flex;
     flex-direction: column;
 }
 
 #sera {
     font-family:"Abril Fatface", serif ;
-    font-size: 4rem; 
+    font-size: 4.2vw; 
     line-height: 0.9;
     margin-bottom: 0.5rem;
+    color: #2d326e;
 }
 
 #entre {
-    font-family:"Oxanium", monospace;
-    letter-spacing: 0.3px;
-    font-size: 2rem;
-    font-weight:lighter;
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: 0.01vw;
+    font-size: 1.9vw;
+    font-weight:500;
     line-break: loose;
     line-height: 1;
     padding-right: 0.5%;
     text-align: left;
+    color: rgb(106, 108, 112);
 }
+
 /* parte direita da página */
 .forms {
-    color: #2B2D42;
+    color: #2d326e;
     width: max-content;
     align-content: center;
 }
@@ -92,55 +125,73 @@ a#saiba_mais {
 }
 
 .form-label {
-    padding:0.3vw 2.5vh;
-    background-color: #e0e6ff;
-    border-radius: 40px;
     font-family:"Abril Fatface", serif ;
-    font-size: 1.5rem;
+    font-size: 1.5vw;
     font-weight: 100;
-    letter-spacing: 1.3px;
-    margin-bottom: .5rem;
+    letter-spacing: 0.05vw;
+    margin-bottom: 0.4vw;
 }
 
 .form-select {
-    font-family:"Oxanium", monospace;
+    font-family: "Montserrat", sans-serif;    
     width: 100%;
     padding: 1rem;
-    border-radius: 40px;
-    font-size: 1rem;
+    border-radius: 13px;
+    font-size: 1vw;
     text-align: left;
     appearance: none;
     border: none;
 }
 
 .form-input {
-    font-family:"Oxanium", monospace;
+    font-family: "Montserrat", sans-serif;    
     width: max-content;
-    font-size: 1rem;
     padding-top: .75rem;
     padding-bottom: .75rem;
     padding-left: 2rem;
     padding-right: 2rem;
-    border-radius: 40px;
+    border-radius: 13px;
     text-align: left;
     appearance: auto;
     border: none;
+    font-size: 1vw;
+
 }
 
 .form-submit {
-    font-family:"Oxanium", monospace;
+    font-family:"Abril Fatface", serif;
+    letter-spacing: 0.01vw;
     padding: 1rem 1rem;
     background-color: #2d326e;
-    color: white;
-    font-weight: 900;
+    color: #e0e6ff;
+    font-weight: normal;
     border: none;
-    border-radius: 40px;
+    border-radius: 15px;
     margin-top: 1rem;
     cursor: pointer;
     width: 100%;
-    font-size: 1.3rem;
+    font-size: 1.5vw;
     text-align: center;
 }
+
+.vejamais {
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: 0.01vw;
+    padding: 1rem 1rem;
+    background-color: #2d326e;
+    color:#e0e6ff;
+    font-weight: normal;
+    border: none;
+    border-radius: 15px;
+    margin: 1rem;
+    cursor: pointer;
+    width: fit-content;
+    font-size: 1.1vw;
+    text-align: center;
+    align-self: center;
+    height: max-content;
+}
+
 
 .form-submit:hover {
     background-color: #e0e6ff;
@@ -153,80 +204,16 @@ a#saiba_mais {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 1.9rem;
+    font-size: 1.8vw;
     color: #2d326e;
 }
 
-.graficos {
-    font-family: "Abril Fatface", serif;
-    color: #2d326e;
-    font-size: 1.9rem;
-}
-
-.horizontal {
-    font-family: "Abril Fatface", serif;
-    color: #2d326e;
-    margin-block-start: 0.2rem;
-    margin-block-end: 0.2rem;
-    padding: 2%;
-    padding-top: 1%;
-}
-
-.graf_h {
-    display: flex;
-    flex-direction: row;
-    align-items: end;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
-}
-
-.titulo_graf_h {
-    display: flex;
-    flex-direction: row;
-    align-content: top;
-    justify-content: space-evenly;
-}
-
-#e {
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-block-start: 0;
-    margin-block-end: 0;
-    position: relative;
-}
-
-#r {margin-top: 0;
-margin-bottom: 0;
-margin-block-start: 0;
-margin-block-end: 0;
-position: relative;
-}
-
-#u {margin-top: 0;
-    margin-bottom: 2%;
-    margin-block-start: 0;
-    margin-block-end: 0;
-    position: relative;
-}
-
-.graf3 {
+.resultadoss {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 2%;
 }
 
-.footer {
-    font-family: "Abril Fatface", serif;
-    color: #2d326e;
-    font-size: 1rem;
-    margin-block-end: 2%;
-    padding: 4%;
-    padding-bottom:1% ;
-    max-width: 60%;
-}
-
-.result{
+.graf_result{
     display: flex;
     padding: 2%;
     align-items: center;
@@ -242,32 +229,18 @@ p {
 
 #sal_hom {
     padding: 0%;
-    color: #4f69e1;
+    color: #007a94;
 }
 
 #sal_mul {
     padding: 0%;
-    color: #8B98F3;
+    color: #A57BB6;
 }
 
-.tooltip {
-    position: absolute;
-    text-align: center;
-    padding: 8px;
-    font-family: "Oxanium", monospace; 
-    font-size: 12px; 
-    background: rgba(255, 255, 255, 0.8); 
-    border: 1px solid #2d326e; 
-    border-radius: 8px;
-    pointer-events: none; 
-    color: #2d326e; 
-    opacity: 0; 
-}
 
 @media (max-width: 768px) {
     /* Ajustes gerais */
     body, html {
-        background-color: #FFFFFF; /* Cor de fundo mais clara */
         font-size: 14px; /* Tamanho de fonte geral menor */
     }
 
@@ -289,8 +262,8 @@ p {
     /* Ajustes para wrappers e layout principal */
     .content-wrapper {
         padding-top: 10px;
-        display: block; /* Empilhar ao invés de usar flex row */
         text-align: center; /* Centralizar conteúdo */
+        flex-direction: row;
     }
 
     .main-column, .forms {
@@ -319,12 +292,12 @@ p {
     }
 
     .form-input, .form-select {
-        width: 100%; /* Entradas para preencher a largura */
-        margin-bottom: 10px; /* Espaço entre entradas */
+        width: max-content; /* Entradas para preencher a largura */
+        margin-bottom: 1vh; /* Espaço entre entradas */
     }
 
     .form-submit {
-        width: 90%; /* Botão mais estreito */
+        width: max-content; /* Botão mais estreito */
         margin-top: 20px; /* Mais espaço acima do botão */
         cursor: pointer; /* Cursor de ponteiro para indicar clicável */
     }

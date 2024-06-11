@@ -1,18 +1,25 @@
 <div class="result">    
-    <div class="resultados">
-        <p>Valor estimado caso homem:</p>
-        <p id="sal_hom">R$<span id="h" class="counter" data-value="{{ salario_homem }}">{{ salario_homem }}</span></p>
-        <br/>
-        <p>Valor estimado caso mulher:</p> 
-        <p id="sal_mul">R$<span id="m" class="counter" data-value="{{ salario_mulher }}">{{ salario_mulher }}</span></p>
-        <br/>
-        <p>Diferença de <span class="counter" data-value="{{ percentual }}">{{ percentual }}</span>%</p> 
-    </div>
-    <div id="chart"></div>
-</div>
-<div class="footer">
-    Este modelo aplica regressão linear ao logaritmo do salário-hora, usando dados dos quatro trimestres de 2023, separados por gênero, da PNAD Contínua. A saída exibida representa o salário total, calculado multiplicando o salário estimado por hora pelas horas trabalhadas fornecidas pelo usuário. Cálculos, modelos e coeficientes obtidos estão disponíveis nesse <a href="https://github.com/giovannacbs/salarios/blob/main/Regressao%20Salario-Hora.py">código</a>. 
-</div>
-<div class="footer">
-    <a href="/" class="form-submit">Voltar</a>
-</div>
+    <div class="resultadoss">
+        <div class="graf_result">
+            <div class="resultados">
+                <p>Valor estimado caso homem:</p>
+                <p id="sal_hom">R$<span id="h" class="counter" data-value="{{ salario_homem }}">{{ salario_homem }}</span></p>
+                <br/>
+                <p>Valor estimado caso mulher:</p> 
+                <p id="sal_mul">R$<span id="m" class="counter" data-value="{{ salario_mulher }}">{{ salario_mulher }}</span></p>
+                <br/>
+                <p>Diferença de <span class="counter" data-value="{{ percentual }}">{{ percentual }}</span>%</p>         
+            </div>
+            <div id="chart"></div>    
+        </div>
+        <div class="links">
+            <a href="/dados" class="vejamais">Clique para ver mais análises sobre a Desigualdade Salarial entre Gêneros no Brasil</a> 
+            <a href="https://github.com/giovannacbs/salarios/" class="vejamais">Metodologia</a>
+        </div>
+        <div class="footer">
+            <a href="https://github.com/giovannacbs" id="saiba_mais">Feito por Giovanna Serafim</a>
+        </div>     
+    </div>    
+</div>    
+   
+
