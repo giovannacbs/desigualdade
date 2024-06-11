@@ -9,7 +9,6 @@ body, html {
     background-color: #EDF2F7;
 }
 
-
 .header {
     font-family: "Oxanium", monospace;
     color: #e0e6ff;
@@ -40,10 +39,9 @@ body, html {
     text-align: center;
     z-index: 1000;
     height: 2rem;
-
 }
 
-.links  {
+.links {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -59,10 +57,8 @@ a#saiba_mais {
     color: #e0e6ff;
     float: right;    
     padding-right: 1%;
-
 }
 
-/* página inteira */
 .content-wrapper {
     padding-top: 0px;
     display: flex;
@@ -72,7 +68,6 @@ a#saiba_mais {
     align-items: center;
 }
 
-/* parte esquerda da página */
 .main-column {
     text-align: left;
     width: 50%;
@@ -91,7 +86,7 @@ a#saiba_mais {
 }
 
 #sera {
-    font-family:"Abril Fatface", serif ;
+    font-family:"Abril Fatface", serif;
     font-size: 4.2vw; 
     line-height: 0.9;
     margin-bottom: 0.5rem;
@@ -102,7 +97,7 @@ a#saiba_mais {
     font-family: "Montserrat", sans-serif;
     letter-spacing: 0.01vw;
     font-size: 1.9vw;
-    font-weight:500;
+    font-weight: 500;
     line-break: loose;
     line-height: 1;
     padding-right: 0.5%;
@@ -110,7 +105,6 @@ a#saiba_mais {
     color: rgb(106, 108, 112);
 }
 
-/* parte direita da página */
 .forms {
     color: #2d326e;
     width: max-content;
@@ -125,7 +119,7 @@ a#saiba_mais {
 }
 
 .form-label {
-    font-family:"Abril Fatface", serif ;
+    font-family:"Abril Fatface", serif;
     font-size: 1.5vw;
     font-weight: 100;
     letter-spacing: 0.05vw;
@@ -155,7 +149,6 @@ a#saiba_mais {
     appearance: auto;
     border: none;
     font-size: 1vw;
-
 }
 
 .form-submit {
@@ -192,13 +185,11 @@ a#saiba_mais {
     height: max-content;
 }
 
-
 .form-submit:hover {
     background-color: #e0e6ff;
     color: #2d326e;
 }
 
-/* Página dados */
 .resultados {
     font-family: "Abril Fatface", serif;
     display: flex;
@@ -213,7 +204,7 @@ a#saiba_mais {
     flex-direction: column;
 }
 
-.graf_result{
+.graf_result {
     display: flex;
     padding: 2%;
     align-items: center;
@@ -237,89 +228,84 @@ p {
     color: #A57BB6;
 }
 
-
 @media (max-width: 768px) {
-    /* Ajustes gerais */
     body, html {
-        font-size: 14px; /* Tamanho de fonte geral menor */
+        font-size: 14px;
     }
 
     .header {
-        height: auto; /* Altura ajustável */
-        padding: 15px 5%; /* Mais espaço interno */
+        height: auto;
+        padding: 15px 5%;
     }
 
     #titulo {
-        font-size: 1.5rem; /* Tamanho de fonte maior para legibilidade */
-        padding-left: 5%; /* Ajuste no padding */
+        font-size: 1.5rem;
+        padding-left: 5%;
     }
 
     a#saiba_mais {
-        font-size: 1rem; /* Tamanho de fonte ajustado para links */
-        padding-right: 5%; /* Ajuste no padding */
+        font-size: 1rem;
+        padding-right: 5%;
     }
 
-    /* Ajustes para wrappers e layout principal */
     .content-wrapper {
         padding-top: 10px;
-        text-align: center; /* Centralizar conteúdo */
+        text-align: center;
         flex-direction: row;
     }
 
     .main-column, .forms {
-        width: 100%; /* Colunas para ocupar a largura total */
-        padding: 10px; /* Padding uniforme */
+        width: 100%;
+        padding: 10px;
     }
 
     .imagem_home {
-        width: 100%; /* Ajustar largura da imagem para preencher */
+        width: 100%;
     }
 
     .home-text, .resultados, .graficos {
-        text-align: center; /* Centralizar textos */
+        text-align: center;
     }
 
-    /* Ajustes para formatação de formulários e entradas */
     .form-group {
-        flex-direction: column; /* Empilhar verticalmente */
-        align-items: center; /* Centralizar itens */
+        flex-direction: column;
+        align-items: center;
     }
 
     .form-label {
-        width: 100%; /* Etiquetas para preencher a largura */
-        text-align: center; /* Texto centralizado */
-        margin-bottom: 5px; /* Espaço abaixo das etiquetas */
+        width: 100%;
+        text-align: center;
+        margin-bottom: 5px;
     }
 
     .form-input, .form-select {
-        width: max-content; /* Entradas para preencher a largura */
-        margin-bottom: 1vh; /* Espaço entre entradas */
+        width: max-content;
+        margin-bottom: 1vh;
     }
 
     .form-submit {
-        width: max-content; /* Botão mais estreito */
-        margin-top: 20px; /* Mais espaço acima do botão */
-        cursor: pointer; /* Cursor de ponteiro para indicar clicável */
+        width: max-content;
+        margin-top: 20px;
+        cursor: pointer;
     }
 
     .form-submit:hover {
-        background-color: #e0e6ff; /* Cor de fundo ao passar o mouse */
-        color: #2d326e; /* Cor do texto ao passar o mouse */
+        background-color: #e0e6ff;
+        color: #2d326e;
     }
 
-    /* Ajustes para gráficos e rodapé */
     .footer {
-        font-size: 0.8rem; /* Tamanho de fonte menor para o rodapé */
-        padding: 10px 5%; /* Padding ajustado */
-        max-width: 100%; /* Largura máxima ajustada */
-        text-align: center; /* Centralizar conteúdo */
+        font-size: 0.8rem;
+        padding: 10px 5%;
+        max-width: 100%;
+        text-align: center;
     }
 
     .graficos, .resultados {
-        flex-direction: column; /* Colunas em forma de pilha */
+        flex-direction: column;
     }
 
     .graf_h, .titulo_graf_h {
-        flex-direction: column; /* Ajustar direção dos gráficos e títulos */
+        flex-direction: column;
     }
 }
