@@ -91,6 +91,10 @@ def calcular_salario_mulher(idade, regiao, educacao, raca, horas_trabalhadas):
 
     return salario_mulher
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
 @app.route('/dados')
 def dados():
     return render_template('dados.html')
