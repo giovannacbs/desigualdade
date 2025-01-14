@@ -134,5 +134,32 @@ def resultado():
                            dados_usuario=dados_usuario,
                            percentual=percentual)
 
+@app.route('/resultado_en', methods=["GET"])
+def resultado_en():
+    idade = request.args.get('idade')
+    educacao = request.args.get('educ')
+    regiao = request.args.get('regiao')
+    raca = request.args.get('raca')
+    horas_trabalhadas = request.args.get('hrs_trab')
+
+    salario_estimado_homem = calcular_salario_homem(idade, regiao, educacao, raca, horas_trabalhadas)
+    salario_estimado_mulher = calcular_salario_mulher(idade, regiao, educacao, raca, horas_trabalhadas)
+
+    salario_estimado_mulher_txt_en = f"{float(salario_estimado_mulher):,.2f}"
+    salario_estimado_homem_txt_en = f"{float(salario_estimado_homem):,.2f}"
+
+    raca_txt = "white" if raca == "branca" else "not white"
+    dados_usuario = f"{idade} years old, {raca_txt}, with education until {educacao}, at the region {regiao}, working for {horas_trabalhadas} hours."
+
+    percentual = ((salario_estimado_homem / salario_estimado_mulher) - 1) * 100
+
+    return render_template('resultado_en.html', 
+                           salario_homem=salario_estimado_homem, 
+                           salario_mulher=salario_estimado_mulher, 
+                           texto_homem=salario_estimado_homem_txt_en, 
+                           texto_mulher=salario_estimado_mulher_txt_en,
+                           dados_usuario=dados_usuario,
+                           percentual=percentual)
+
 if __name__ == '__main__':
     app.run(debug=True)

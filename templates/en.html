@@ -11,7 +11,7 @@
             $("#form").on("submit", function(event) {
                 event.preventDefault();
                 $.ajax({
-                    url: "/resultado",
+                    url: "/resultado_en",
                     type: "GET",
                     data: $(this).serialize(),
                     success: function(data) {
@@ -39,7 +39,7 @@
                     duration: 2000,
                     easing: 'swing',
                     step: function(now) {
-                        $(this).text(parseFloat(now).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+                        $(this).text(parseFloat(now).toFixed(2));
                     }
                 });
             });
@@ -71,12 +71,7 @@
             x.domain(data.map(d => d.category));
             y.domain([0, d3.max(data, d => d.value)]);
 
-            const formatCurrency = d3.formatLocale({
-                decimal: ",",
-                thousands: ".",
-                grouping: [3],
-                currency: ["R$", ""]
-            }).format("$,.0f");
+            const formatCurrency = d3.format("$,.2f")
 
             g.append("g")
              .attr("class", "axis axis--x")
