@@ -47,8 +47,8 @@
 
         function createChart() {
             const data = [
-                {category: 'Homem', value: parseFloat($("#h").data('value'))},
-                {category: 'Mulher', value: parseFloat($("#m").data('value'))}
+                {category: 'Men', value: parseFloat($("#h").data('value'))},
+                {category: 'Women', value: parseFloat($("#m").data('value'))}
             ];
 
             const width = window.innerWidth * 0.3;
@@ -103,7 +103,7 @@
              .attr("width", x.bandwidth())
              .attr("y", chartHeight)
              .attr("height", 0)
-             .style("fill", d => d.category === "Homem" ? "#007a94" : "#A57BB6")
+             .style("fill", d => d.category === "Men" ? "#007a94" : "#A57BB6")
              .transition()
              .duration(2000)
              .attr("y", d => y(d.value))
