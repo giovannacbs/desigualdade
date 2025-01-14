@@ -13,7 +13,9 @@ Onde $\beta_0$ é o intercepto, $\beta_i$ são os coeficientes para as variávei
 
 
 # Gender Wage Inequality in Brazil
-## Final project for the Data Journalism and Automation Certificate at the Insper Master
+## Final project for the Data Journalism and Automation Master at Insper
+
+Using the 2023 quarterly dataset from the [Continuous PNAD](https://www.ibge.gov.br/estatisticas/sociais/trabalho/9171-pesquisa-nacional-por-amostra-de-domicilios-continua-mensal.html) provided by IBGE, linear regressions were calculated using the **OLS (Ordinary Least Squares)** method. Two separate regressions were performed: one with the dataset filtered for **women** and another with the dataset filtered for **men**. 
 
 The formula for the linear regression of the logarithm of hourly wage (`log_hourly_wage`) is given by:
 
