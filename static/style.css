@@ -9,20 +9,13 @@ body, html {
     background-color: #EDF2F7;
 }
 
-.header {
-    font-family: "Oxanium", monospace;
+.header{
+    font-family:"Abril Fatface", serif ;
     color: #e0e6ff;
-    background-color: #2d326e;
+    background-color:#2d326e;
     font-weight: 100;
     height: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1%;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    width: 100%;
+    align-content:space-evenly;
 }
 
 .footer {
@@ -50,6 +43,7 @@ body, html {
 #titulo {
     font-family: "Abril Fatface", serif;
     font-size: x-large;
+    padding-left: 1%;
     color: #e0e6ff;
 }
 

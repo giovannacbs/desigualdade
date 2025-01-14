@@ -99,6 +99,14 @@ def index():
 def dados():
     return render_template('dados.html')
 
+@app.route('/en')
+def dados():
+    return render_template('en.html')
+
+@app.route('/dados_en')
+def dados():
+    return render_template('dados_en.html')
+
 @app.route('/resultado', methods=["GET"])
 def resultado():
     idade = request.args.get('idade')
