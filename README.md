@@ -1,6 +1,8 @@
 # Desigualdade Salarial entre Gêneros no Brasil
 ## Trabalho final para o certificado de Jornalismo de Dados e Automação do Master no Insper
 
+https://desigualdade.onrender.com/
+
 Através da base de dados dos quatro trimestres de 2023 da [PNADContínua](https://www.ibge.gov.br/estatisticas/sociais/trabalho/9171-pesquisa-nacional-por-amostra-de-domicilios-continua-mensal.html) disponibilizada pelo IBGE, foi possível calcular regressões lineares, utilizando o método OLS *(ordinary least squares)*. Foi rodado uma regressão para cada gênero: uma utilizando a base de dados filtrada para **mulheres** e outra para **homens**.
 
 A fórmula da regressão linear para o logaritmo do salário por hora (`log_salario_hora`) é dada por:
@@ -14,6 +16,8 @@ Onde $\beta_0$ é o intercepto, $\beta_i$ são os coeficientes para as variávei
 
 # Gender Wage Inequality in Brazil
 ## Final project for the Data Journalism and Automation Master at Insper
+
+https://desigualdade.onrender.com/en
 
 Using the 2023 quarterly dataset from the [Continuous PNAD](https://www.ibge.gov.br/estatisticas/sociais/trabalho/9171-pesquisa-nacional-por-amostra-de-domicilios-continua-mensal.html) provided by IBGE, linear regressions were calculated using the **OLS (Ordinary Least Squares)** method. Two separate regressions were performed: one with the dataset filtered for **women** and another with the dataset filtered for **men**. 
 
