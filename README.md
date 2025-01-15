@@ -1,5 +1,4 @@
-# Desigualdade Salarial entre Gêneros no Brasil
-## Trabalho final para o certificado de Jornalismo de Dados e Automação do Master no Insper
+# Desigualdade Salarial entre Gêneros no Brasil 🇧🇷 
 
 https://desigualdade.onrender.com/
 
@@ -14,8 +13,7 @@ $$
 Onde $\beta_0$ é o intercepto, $\beta_i$ são os coeficientes para as variáveis independentes $x_i$, que incluem idade, raça, região e nível educacional.
 
 
-# Gender Wage Inequality in Brazil
-## Final project for the Data Journalism and Automation Master at Insper
+# Gender Wage Inequality in Brazil 🇺🇸
 
 https://desigualdade.onrender.com/en
 
