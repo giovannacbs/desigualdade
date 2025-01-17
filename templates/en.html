@@ -71,8 +71,11 @@
             x.domain(data.map(d => d.category));
             y.domain([0, d3.max(data, d => d.value)]);
 
-            const formatCurrency = d3.format("$,.2f")
-
+            const formatCurrency = d3.formatLocale({
+                grouping: [3],
+                currency: ["R$", ""]
+            }).format("$,.0f");
+            
             g.append("g")
              .attr("class", "axis axis--x")
              .attr("transform", `translate(0,${chartHeight})`)
